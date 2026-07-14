@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Saanvi | Biotechnology</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --bg:#000;--bg2:#0a0a0a;--bg3:#111;
+    --blue:#3B82F6;--blue-light:#60A5FA;--blue-glow:rgba(59,130,246,0.3);
+    --white:#fff;--gray:#a0a0a0;--border:rgba(59,130,246,0.2);
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-size:1.3rem;font-weight:700;color:var(--blue-light);letter-spacing:1px;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--gray);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color .3s;}
+  .nav-links a:hover{color:var(--blue-light);}
+
+  /* HERO */
+  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden;}
+  .hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,0.15) 0%,transparent 70%);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+  .hero-tag{display:inline-block;padding:.4rem 1rem;border:1px solid var(--blue);border-radius:999px;font-size:.8rem;color:var(--blue-light);margin-bottom:1.5rem;letter-spacing:2px;text-transform:uppercase;}
+  #hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:700;line-height:1.05;margin-bottom:1rem;}
+  #hero h1 span{color:var(--blue-light);text-shadow:0 0 30px var(--blue-glow);}
+  .hero-sub{font-size:1.15rem;color:var(--gray);max-width:500px;line-height:1.7;margin-bottom:2.5rem;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
+  .btn{padding:.75rem 1.8rem;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .3s;}
+  .btn-primary{background:var(--blue);color:#fff;border:none;}
+  .btn-primary:hover{background:var(--blue-light);box-shadow:0 0 20px var(--blue-glow);}
+  .btn-outline{background:transparent;color:var(--blue-light);border:1px solid var(--blue);}
+  .btn-outline:hover{background:var(--blue-glow);box-shadow:0 0 20px var(--blue-glow);}
+
+  /* SECTIONS */
+  section{padding:6rem 2rem;max-width:1100px;margin:0 auto;}
+  .section-label{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem;}
+  .section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:1rem;}
+  .section-divider{width:60px;height:3px;background:var(--blue);border-radius:2px;margin-bottom:2.5rem;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:center;}
+  .about-img{width:100%;aspect-ratio:1;border-radius:16px;background:var(--bg3);border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gray);gap:.5rem;font-size:.85rem;}
+  .about-img i{font-size:2.5rem;color:var(--blue);}
+  .about-text p{color:var(--gray);line-height:1.8;font-size:1rem;}
+  .about-text p + p{margin-top:1rem;}
+
+  /* SKILLS */
+  .skills-grid{display:flex;flex-wrap:wrap;gap:.75rem;}
+  .skill-chip{padding:.5rem 1.2rem;border:1px solid var(--blue);border-radius:999px;font-size:.85rem;color:var(--blue-light);background:rgba(59,130,246,0.07);transition:all .3s;}
+  .skill-chip:hover{background:var(--blue-glow);box-shadow:0 0 12px var(--blue-glow);}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+  .project-card{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all .3s;position:relative;overflow:hidden;}
+  .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--blue-light));opacity:0;transition:opacity .3s;}
+  .project-card:hover{border-color:var(--blue);box-shadow:0 0 30px rgba(59,130,246,0.1);transform:translateY(-4px);}
+  .project-card:hover::before{opacity:1;}
+  .project-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:.8rem;}
+  .project-card h3{font-size:1.15rem;font-weight:600;margin-bottom:.6rem;}
+  .project-card p{color:var(--gray);font-size:.9rem;line-height:1.6;margin-bottom:1.2rem;}
+  .project-link{color:var(--blue-light);font-size:.85rem;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s;}
+  .project-link:hover{gap:.7rem;}
+
+  /* AWARDS */
+  .awards-list{display:flex;flex-direction:column;gap:1rem;}
+  .award-item{display:flex;align-items:flex-start;gap:1.2rem;padding:1.4rem 1.8rem;background:var(--bg3);border:1px solid var(--border);border-radius:12px;transition:all .3s;}
+  .award-item:hover{border-color:var(--blue);box-shadow:0 0 20px rgba(59,130,246,0.08);}
+  .award-icon{width:40px;height:40px;border-radius:8px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;color:var(--blue-light);flex-shrink:0;font-size:1.1rem;}
+  .award-info h4{font-size:1rem;font-weight:600;margin-bottom:.25rem;}
+  .award-info p{color:var(--gray);font-size:.85rem;}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;align-items:start;}
+  .contact-info p{color:var(--gray);line-height:1.7;margin-bottom:2rem;}
+  .social-links{display:flex;flex-direction:column;gap:.8rem;}
+  .social-link{display:flex;align-items:center;gap:.9rem;color:var(--gray);text-decoration:none;font-size:.95rem;transition:color .3s;}
+  .social-link:hover{color:var(--blue-light);}
+  .social-link i{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .3s;color:var(--blue);}
+  .social-link:hover i{border-color:var(--blue);background:var(--blue-glow);}
+  .contact-form{display:flex;flex-direction:column;gap:1rem;}
+  .form-group{display:flex;flex-direction:column;gap:.4rem;}
+  .form-group label{font-size:.8rem;letter-spacing:1px;text-transform:uppercase;color:var(--gray);}
+  .form-group input,.form-group textarea{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:.95rem;outline:none;transition:border-color .3s;}
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--blue);}
+  .form-group textarea{resize:vertical;min-height:130px;}
+  .form-success{display:none;color:var(--blue-light);font-size:.9rem;padding:.8rem;border:1px solid var(--blue);border-radius:8px;text-align:center;}
+
+  /* RESUME */
+  .resume-section{text-align:center;padding:5rem 2rem;background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .resume-section h2{font-size:2rem;font-weight:700;margin-bottom:.8rem;}
+  .resume-section p{color:var(--gray);margin-bottom:2rem;}
+
+  /* FOOTER */
+  footer{text-align:center;padding:2rem;color:var(--gray);font-size:.8rem;border-top:1px solid var(--border);}
+
+  @media(max-width:700px){
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Saanvi.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-tag">Biotechnology</div>
+  <h1>Hi, I'm <span>Saanvi.</span></h1>
+  <p class="hero-sub">
+    <!-- EDIT: Your tagline/one-liner here -->
+    Incoming biotechnology major at Rutgers; interested in the intersection of science and technology.
+  </p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary">View My Work</a>
+    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Who I Am</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="section-divider"></div>
+      <div>
+    <div class="about-text">
+      <!-- EDIT: Replace with your bio -->
+      <p>Hi! I'm Saanvi. I just graduated high school and am excited to continue my learning journey at Rutgers New Brunswick. I am pursuing a bioinformatics focused track and am excited to see how I can apply tech-based solutions to solve scientific problems. In my free time, I love to read, bake, and honestly just sleep. Thanks for visiting my page!</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">What I Know</p>
+  <h2 class="section-title">Skills</h2>
+  <div class="section-divider"></div>
+  <!-- EDIT: Add/remove skill chips as needed -->
+  <div class="skills-grid">
+    <span class="skill-chip">Molecular Biology</span>
+    <span class="skill-chip">CRISPR/Gene Editing</span>
+    <span class="skill-chip">Cell Culture</span>
+    <span class="skill-chip">PCR & Gel Electrophoresis</span>
+    <span class="skill-chip">Bioinformatics</span>
+    <span class="skill-chip">R (Statistical Analysis)</span>
+    <span class="skill-chip">Lab Safety & GLP</span>
+    <span class="skill-chip">Scientific Writing</span>
+    <span class="skill-chip">Data Visualization</span>
+    <span class="skill-chip">Research & Literature Review</span>
+    <span class="skill-chip">Microsoft Office</span>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">What I've Built</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="section-divider"></div>
+  <div class="projects-grid">
+
+    <!-- EDIT: Project 1 -->
+    <div class="project-card">
+      <p class="project-tag">Research</p>
+      <h3>Project Title One</h3>
+      <p>Describe what this project was about, what you did, and what the outcome or impact was. Keep it concise and impressive.</p>
+      <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <!-- EDIT: Project 2 -->
+    <div class="project-card">
+      <p class="project-tag">Lab Work</p>
+      <h3>Project Title Two</h3>
+      <p>Describe what this project was about, what you did, and what the outcome or impact was. Keep it concise and impressive.</p>
+      <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Awards & Achievements</h2>
+  <div class="section-divider"></div>
+  <div class="awards-list">
+
+    <!-- EDIT: Award 1 -->
+    <div class="award-item">
+      <div class="award-icon"><i class="fas fa-trophy"></i></div>
+      <div class="award-info">
+        <h4>Award or Achievement Name</h4>
+        <p>Issuing organization · Year — Short description of what this award was for.</p>
+      </div>
+    </div>
+
+    <!-- EDIT: Award 2 -->
+    <div class="award-item">
+      <div class="award-icon"><i class="fas fa-medal"></i></div>
+      <div class="award-info">
+        <h4>Award or Achievement Name</h4>
+        <p>Issuing organization · Year — Short description of what this award was for.</p>
+      </div>
+    </div>
+
+    <!-- EDIT: Award 3 -->
+    <div class="award-item">
+      <div class="award-icon"><i class="fas fa-star"></i></div>
+      <div class="award-info">
+        <h4>Award or Achievement Name</h4>
+        <p>Issuing organization · Year — Short description of what this award was for.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESUME DOWNLOAD -->
+<div class="resume-section">
+  <h2>Want the Full Picture?</h2>
+  <p>Download my resume to see my complete experience, education, and qualifications.</p>
+  <!-- EDIT: Replace href with your actual resume file link -->
+  <a href="#" class="btn btn-primary" download><i class="fas fa-download" style="margin-right:.5rem;"></i>Download Resume</a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's Connect</p>
+  <h2 class="section-title">Contact Me</h2>
+  <div class="section-divider"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Whether you have an opportunity, a question, or just want to connect — my inbox is open. I'd love to hear from you.</p>
+      <div class="social-links">
+        <!-- EDIT: Replace # with your actual profile URLs -->
+        <a href="#" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+        <a href="#" class="social-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="mailto:saanvi11223@gmail.com" class="social-link"><i class="fas fa-envelope"></i> saanvi11223@gmail.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="fname" placeholder="Jane Smith"/>
+        </div>
+        <div class="form-group">
+          <label>Your Email</label>
+          <input type="email" id="femail" placeholder="jane@example.com"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="fmsg" placeholder="Hi Saanvi, I'd love to connect about..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="submitForm()">Send Message <i class="fas fa-paper-plane" style="margin-left:.4rem;"></i></button>
+        <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you soon.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built by Saanvi · <!-- EDIT: update year --> 2025</p>
+</footer>
+
+<script>
+function submitForm(){
+  const n=document.getElementById('fname').value.trim();
+  const e=document.getElementById('femail').value.trim();
+  const m=document.getElementById('fmsg').value.trim();
+  if(!n||!e||!m){alert('Please fill in all fields.');return;}
+  const s=document.getElementById('formSuccess');
+  s.style.display='block';
+  document.getElementById('fname').value='';
+  document.getElementById('femail').value='';
+  document.getElementById('fmsg').value='';
+  setTimeout(()=>s.style.display='none',5000);
+}
+</script>
+</body>
+</html>
